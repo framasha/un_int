@@ -6,22 +6,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////projects.db'
 db = SQLAlchemy(app)
 
 ### MODELS
-class PROJECTS:
-    project_id = db.Column(db.Int(), primary_key=True)
+class PROJECTS(db.Model):
+    project_id = db.Column(db.Integer, primary_key=True)
     project_title = db.Column(db.String(50))
     paascode = db.Column(db.String(50))
-    approval_status = db.Column(db.Boolean(), default=False)
-    fund = db.Column()
-    pagvalue = db.Column()
-    start_date = db.Column(db.DateTime())
-    end_date = db.Column(db.DateTime())
+    approval_status = db.Column(db.Boolean, default=False)
+    fund = db.Column(db.String(10))
+    pagvalue = db.Column(db.Integer)
+    start_date = db.Column(db.DateTime)
+    end_date = db.Column(db.DateTime)
     country = db.Column(db.String(50))
     lead_org_unit = db.Column(db.String(50))
     theme = db.Column(db.String(50))
-    donor = db.Column(db.String(50))
-    total_expenditure = db.Column()
-    total_contribution = db.Column()
-    total_psc = db.Column()
+    donor = db.Column(db.Text)
+    total_expenditure = db.Column(db.Integer)
+    total_contribution = db.Column(db.Integer)
+    total_psc = db.Column(db.Integer)
 
 
 ### ROUTES
