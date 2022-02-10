@@ -2,7 +2,8 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////projects.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 ### MODELS
@@ -23,7 +24,7 @@ class PROJECTS(db.Model):
     total_contribution = db.Column(db.Integer)
     total_psc = db.Column(db.Integer)
 
-
+db.create_all()
 ### ROUTES
 
 @app.route('/api/projects/all')
